@@ -86,7 +86,7 @@ resource "aws_iam_instance_profile" "petclinic-master-server-profile" {
 
 resource "aws_instance" "kube-master" {
   ami = "ami-005fc0f236362e99f"
-  instance_type = "t3a.medium"
+  instance_type = "t3.micro"
   iam_instance_profile = aws_iam_instance_profile.petclinic-master-server-profile.name
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
   key_name = "clarus"
@@ -103,7 +103,7 @@ resource "aws_instance" "kube-master" {
 
 resource "aws_instance" "worker-1" {
   ami = "ami-005fc0f236362e99f"
-  instance_type = "t3a.medium"
+  instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
   key_name = "clarus"
   subnet_id = "subnet-05c2a38a937f813a5"  # select own subnet_id of us-east-1a
@@ -119,7 +119,7 @@ resource "aws_instance" "worker-1" {
 
 resource "aws_instance" "worker-2" {
   ami = "ami-005fc0f236362e99f"
-  instance_type = "t3a.medium"
+  instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
   key_name = "clarus"
   subnet_id = "subnet-05c2a38a937f813a5"  # select own subnet_id of us-east-1a
